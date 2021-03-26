@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+    <!--  定义别名  -->
+    <typeAliases>
+        <!-- <typeAlias type="com.ywt.domain.Account" alias="account"/>-->
+        <package name="com.ywt.domain"/>
+    </typeAliases>
+    <!--    配置分页助手插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"/>
+        </plugin>
+    </plugins>
+
+<!--    &lt;!&ndash;  加载映射文件  &ndash;&gt;-->
+<!--    <mappers>-->
+<!--&lt;!&ndash;        <mapper resource="com.ywt.mapper/AccountMapper.xml"></mapper>&ndash;&gt;-->
+<!--        <package name="com.ywt.mapper"/>-->
+<!--    </mappers>-->
+</configuration>

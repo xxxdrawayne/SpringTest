@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--声明Student对象
+        注入：就是赋值的意思
+        di：给属性赋值
+        1.set注入（设值注入）：spring调用类的set方法，用set方法实现属性的赋值（80%）。
+        2.构造注入，Spring调用类的有参构造方法创建对象，在构造方法中完成赋值。
+     -->
+
+
+    <!--    引用类型的自动注入：spring框架根据某些规则可以给引用类型赋值，不用你再给引用类型复制了
+                              使用的规则是byName,byType;
+            1.byName (按名称注入): Java类中引用类型的属性名和spring容器中（配置文件）bean的id名称一样，
+                                  且数据类型是一致的，这样的容器中的bean，spring能够赋值给引用类型
+            1.byType (按类型注入): Java类中引用类型的数据类型和spring容器中（配置文件）<bean>的class属性是同源关系的，
+                                  这样的bean能够赋值给引用类型
+                同源就是同一类的意思：
+                1.Java类中引用类型的数据类型和bean的class的值是一样的。
+                2.Java类中引用类型的数据类型和bean的class的值是父子类关系的。
+                3。Java类中引用类型的数据类型和bean的class的值是接口和实现类关系的。
+    -->
+    <bean id="myStudent" class="com.ywt.ba04.Student" autowire="byName">
+        <property name="name" value="陈奕迅"/> <!--调用setName（）方法-->
+        <property name="age" value="45"/>
+<!--        <property name="school" ref="mySchool"/>-->
+    </bean>
+
+    <bean id="myStudent2" class="com.ywt.ba04.Student"  autowire="byType">
+        <property name="name" value="郭富城"/> <!--调用setName（）方法-->
+        <property name="age" value="39"/>
+<!--        <constructor-arg index="2" ref="school"/>-->
+    </bean>
+
+    <bean id="school" class="com.ywt.ba04.School">
+        <property name="name" value="XUPT"/>
+        <property name="adress" value="西安市长安区郭杜街道"/>
+    </bean>
+
+</beans>

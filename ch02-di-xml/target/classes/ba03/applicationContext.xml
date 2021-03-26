@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--声明Student对象
+        注入：就是赋值的意思
+        di：给属性赋值
+        1.set注入（设值注入）：spring调用类的set方法，用set方法实现属性的赋值（80%）。
+        2.构造注入，Spring调用类的有参构造方法创建对象，在构造方法中完成赋值。
+     -->
+<!--        构造注入-->
+    <bean id="mySchool" class="com.ywt.ba03.School">
+        <property name="name" value="XUPT"/>
+        <property name="adress" value="西安市长安区郭杜街道"/>
+    </bean>
+
+    <bean id="myStudent" class="com.ywt.ba03.Student">
+      <constructor-arg name="name" value="张学友"/>
+      <constructor-arg name="age" value="61 "/>
+      <constructor-arg name="school" ref="mySchool"/>
+    </bean>
+
+    <bean id="myStudent2" class="com.ywt.ba03.Student">
+        <constructor-arg index="0" value="郭富城"/>
+        <constructor-arg index="1" value="45"/>
+        <constructor-arg index="2" ref="mySchool"/>
+    </bean>
+
+    <bean id="myFile" class="java.io.File">
+        <constructor-arg name="parent" value="E:\JAVA_workspace\spring-course\ch02-di-xml"/>
+        <constructor-arg name="child" value="readme.txt"/>
+    </bean>
+</beans>
